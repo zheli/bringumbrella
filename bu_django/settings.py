@@ -123,7 +123,6 @@ INSTALLED_APPS = (
     'registration',
     'bu_django',
     'django_cron',
-    'djrill',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -172,8 +171,3 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 ACCOUNT_ACTIVATION_DAYS = 1
-
-#Mandrill settings
-MANDRILL_API_KEY = "aabf5c2b-a872-4c57-9e1c-7b76f65d010a"
-MANDRILL_API_URL = "https://mandrillapp.com/api/1.0/"
-EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
