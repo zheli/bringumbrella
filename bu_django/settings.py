@@ -1,7 +1,7 @@
 # Django settings for bu_django project.
 import os
 
-DEBUG = True
+DEBUG = False 
 TEMPLATE_DEBUG = DEBUG
 PROJECT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
 print('Launching in folder: %s' % PROJECT_DIR)
@@ -122,7 +122,7 @@ INSTALLED_APPS = (
     'signup',
     'registration',
     'bu_django',
-    'django_cron',
+    #'mailchimp',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -158,11 +158,6 @@ LOGGING = {
     }
 }
 
-#cron settings
-CRON_CLASSES = [
-    "bu_django.backend.CheckWeatherCron",
-]
-
 #email settings
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'linuxcity.jn@gmail.com'
@@ -171,3 +166,9 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 ACCOUNT_ACTIVATION_DAYS = 1
+
+#See if local settings are there
+try:
+    from local_settings import *
+except:
+    pass

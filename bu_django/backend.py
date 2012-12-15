@@ -4,15 +4,20 @@ from django.template.loader import render_to_string
 import urllib2
 import json
 import logging
+from bu_django.local_settings import *
 
 def send_testmail(subject, content, icon):
 	#email = EmailMessage('Bring umbrella!', 'It is going to rain today:)\n\nSent by me', to=['linuxcity.jn@gmail.com'])
 	email_content = render_to_string('email.html', {'icon': icon, 'content' : content})
-	email = EmailMessage(subject, email_content, to=['linuxcity.jn@gmail.com'], bcc=['gorbiz@gmail.com', 'oscar.lindberg@gmail.com', 'danmalmx@gmail.com'])
+	#email = EmailMessage(subject, email_content, to=['linuxcity.jn@gmail.com'])
+	email = EmailMessage(subject, email_content, to=['linuxcity.jn@gmail.com'], bcc=MAILLING_LIST)
 	email.content_subtype = 'html'
 	logging.info('sending test mail!')
 	return email.send()
 
+def send_mail():
+    return
+    
 # class CheckWeatherCron(CronJobBase):
 # 	RUN_AT_TIMES = ['05:00']
 # 	schedule = Schedule(run_at_times=RUN_AT_TIMES)
